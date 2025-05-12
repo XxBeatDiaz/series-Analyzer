@@ -20,11 +20,11 @@ namespace Analayzer
                 switch (user1)
                 {
                     case 1:          
-                        input = newSeries();    
+                        input = newSeries();// הפונקציה הראשונה ליצירת סדרה חדשה
                         break;
 
                     case 2:                    
-                        Console.WriteLine("b");
+                        showSeries(input);// הפונקציה השנייה להדפסת הסדרה הנוכחית
                         break;
 
                     case 3:                    
@@ -124,6 +124,12 @@ namespace Analayzer
                 }
 
                 return listNums; 
+            }
+
+
+            void showSeries(List<float> series)
+            {
+                Console.WriteLine(string.Join(", ", series));
             }
         }   
     }
