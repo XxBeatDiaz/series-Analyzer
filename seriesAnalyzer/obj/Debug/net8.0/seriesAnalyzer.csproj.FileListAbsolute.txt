@@ -1,0 +1,15 @@
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\obj\Debug\net8.0\seriesAnalyzer.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\obj\Debug\net8.0\seriesAnalyzer.AssemblyInfoInputs.cache
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\obj\Debug\net8.0\seriesAnalyzer.AssemblyInfo.cs
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\obj\Debug\net8.0\seriesAnalyzer.csproj.CoreCompileInputs.cache
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\obj\Debug\net8.0\seriesAnalyzer.sourcelink.json
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\bin\Debug\net8.0\seriesAnalyzer.exe
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\bin\Debug\net8.0\seriesAnalyzer.deps.json
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\bin\Debug\net8.0\seriesAnalyzer.runtimeconfig.json
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\bin\Debug\net8.0\seriesAnalyzer.dll
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\bin\Debug\net8.0\seriesAnalyzer.pdb
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\obj\Debug\net8.0\seriesAnalyzer.dll
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\obj\Debug\net8.0\refint\seriesAnalyzer.dll
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\obj\Debug\net8.0\seriesAnalyzer.pdb
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\obj\Debug\net8.0\seriesAnalyzer.genruntimeconfig.cache
+C:\Users\itzhak\source\repos\seriesAnalyzer\seriesAnalyzer\obj\Debug\net8.0\ref\seriesAnalyzer.dll
