@@ -27,8 +27,9 @@ namespace Analayzer
                         showSeries(input);// הפונקציה השנייה להדפסת הסדרה הנוכחית
                         break;
 
-                    case 3:                    
-                        Console.WriteLine("c");
+                    case 3:   
+                        showSeries(input); // שימוש בפונקציה השנייה כדי להציג את השוני בין המקורי לריוורס              
+                        reversOrder(input); // הפונקציה השלישית להדפסת הסדרה בריוורס
                         break;
 
                     case 4:                    
@@ -81,6 +82,9 @@ namespace Analayzer
             }
 
 
+            // פונקציות עזר לפונקציה ליצירת סדרה חדשה
+            ///////////////////////////////////////
+            
             string cleanString(string numbers) //פונקציה לניקוי סטרינג
             {
                 foreach(char num in numbers)
@@ -126,11 +130,26 @@ namespace Analayzer
                 return listNums; 
             }
 
+            //סיום פונקציות עזר
+            /////////////////////////////////////////
+            
 
-            void showSeries(List<float> series)
+            void showSeries(List<float> series)// פונקציה המציגה את הסדרה המקורית
             {
                 Console.WriteLine(string.Join(", ", series));
             }
+
+
+             void reversOrder(List<float> userInput)// פונקציה המציגה את הסדרה בריוורס
+            {
+                System.Console.Write("The reversed order: ");
+                for(int i = userInput.Count()-1; i >= 0; i--)
+                {
+                    Console.Write($"{i},");
+                }
+            }  
+
+            
         }   
     }
 }
