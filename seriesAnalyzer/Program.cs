@@ -63,6 +63,68 @@ namespace Analayzer
                         break;
                 }
             }
+            //פונקציה מספר 1
+            List <float> newSeries()
+            {
+                string numbers = Console.ReadLine()!;//קבלת סטרינג מהמשתמש 
+                if(isEmpty(numbers))// בדיקה אם ריק
+                {
+                    Console.WriteLine("The series empty try egain");
+                    List<float> error = new List<float>{0};
+                    return error; //שולח הודעה שהסטרינג ריק ומחזיר ליסט עם הספרה אפס                 
+                }
+
+                string cleanNumbers = cleanString(numbers); // ניקוי מסימנים ואותיות
+                List <float> listNums = makeListNums(cleanNumbers); //הופך את הסטרינג לליסט
+
+                return listNums;
+            }
+
+
+            string cleanString(string numbers) //פונקציה לניקוי סטרינג
+            {
+                foreach(char num in numbers)
+                {
+                    if(char.IsDigit(num) || num == ',' || num == '.')
+                    {
+                        continue;
+                    }
+                    else
+                    {
+                       numbers = numbers.Replace(num.ToString(), "");
+                       System.Console.WriteLine(num);
+                    }
+                }
+                return numbers;
+            }
+
+
+            bool isEmpty(string numbers)//פונקציה הבודקת האם הסטרינג ריק
+            {
+                bool empty = false;
+
+                    if(numbers == "")
+                    {
+                        empty = true; 
+                    }
+                return empty;
+            }
+
+
+            List<float> makeListNums(string numbers)// פונקציה היוצרת מהסטרינג ליסט
+            {
+                string[] arryNums = numbers.Split(',');
+
+                List<float> listNums = new List<float>();
+
+                foreach(string num in arryNums)
+                {
+                    float convert = float.Parse(num);
+                    listNums.Add(convert);
+                }
+
+                return listNums; 
+            }
         }   
     }
 }
