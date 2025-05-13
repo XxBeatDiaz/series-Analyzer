@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Numerics;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
 
@@ -12,7 +13,7 @@ namespace Analayzer
             Menu();           
             void Menu()
             {
-                List<float> input = newSeries();//לכאן יכנס הסדרה הראשונה || זמני!!!
+                List<float> input = NewSeries();//לכאן יכנס הסדרה הראשונה || זמני!!!
 
                 Console.Write("pleas enter number: ");
                 int user1 = int.Parse(Console.ReadLine()!);//בקשת מספר מהמשתמש לבחירת פונקציה|| זמני!!!
@@ -20,23 +21,23 @@ namespace Analayzer
                 switch (user1)
                 {
                     case 1:          
-                        input = newSeries();// הפונקציה הראשונה ליצירת סדרה חדשה
+                        input = NewSeries();// הפונקציה הראשונה ליצירת סדרה חדשה
                         break;
 
                     case 2:                    
-                        showSeries(input);// הפונקציה השנייה להדפסת הסדרה הנוכחית
+                        ShowSeries(input);// הפונקציה השנייה להדפסת הסדרה הנוכחית
                         break;
 
                     case 3:   
-                        reversOrder(input); // הפונקציה השלישית להדפסת הסדרה בריוורס                                    
+                        ReversOrder(input); // הפונקציה השלישית להדפסת הסדרה בריוורס                                    
                         break;
 
                     case 4:                    
-                        sortedOrder(input);
+                        SortedOrder(input);// הפונקציה הרביעית להדפסת הסדרה בצורה ממויינת מהערך הנמוך לגבוה
                         break;
 
                     case 5:                    
-                        Console.WriteLine("e");
+                        MaxValue(input); // הפונקציה החמישית להדפסת המספר הגבוה
                         break;
 
                     case 6:                    
@@ -66,18 +67,18 @@ namespace Analayzer
 
 
             //פונקציה היוצרת סדרה חדשה
-            List <float> newSeries()
+            List <float> NewSeries()
             {
                 string numbers = Console.ReadLine()!;//קבלת סטרינג מהמשתמש 
-                if(isEmpty(numbers))// בדיקה אם ריק
+                if(IsEmpty(numbers))// בדיקה אם ריק
                 {
                     Console.WriteLine("The series empty try egain");
                     List<float> error = new List<float>{0};
                     return error; //שולח הודעה שהסטרינג ריק ומחזיר ליסט עם הספרה אפס                 
                 }
 
-                string cleanNumbers = cleanString(numbers); // ניקוי מסימנים ואותיות
-                List <float> listNums = makeListNums(cleanNumbers); //הופך את הסטרינג לליסט
+                string cleanNumbers = CleanString(numbers); // ניקוי מסימנים ואותיות
+                List <float> listNums = MakeListNums(cleanNumbers); //הופך את הסטרינג לליסט
 
                 return listNums;
             }
@@ -86,7 +87,7 @@ namespace Analayzer
             // פונקציות עזר לפונקציה ליצירת סדרה חדשה
             ///////////////////////////////////////
             
-            string cleanString(string numbers) //פונקציה לניקוי סטרינג
+            string CleanString(string numbers) //פונקציה לניקוי סטרינג
             {
                 foreach(char num in numbers)
                 {
@@ -104,7 +105,7 @@ namespace Analayzer
             }
 
 
-            bool isEmpty(string numbers)//פונקציה הבודקת האם הסטרינג ריק
+            bool IsEmpty(string numbers)//פונקציה הבודקת האם הסטרינג ריק
             {
                 bool empty = false;
 
@@ -116,7 +117,7 @@ namespace Analayzer
             }
 
 
-            List<float> makeListNums(string numbers)// פונקציה היוצרת מהסטרינג ליסט
+            List<float> MakeListNums(string numbers)// פונקציה היוצרת מהסטרינג ליסט
             {
                 string[] arryNums = numbers.Split(',');
 
@@ -135,13 +136,13 @@ namespace Analayzer
             /////////////////////////////////////////
             
 
-            void showSeries(List<float> series)// פונקציה המציגה את הסדרה המקורית
+            void ShowSeries(List<float> series)// פונקציה המציגה את הסדרה המקורית
             {
                 Console.WriteLine(string.Join(", ", series));
             }
 
 
-             void reversOrder(List<float> series)// פונקציה המציגה את הסדרה בריוורס
+             void ReversOrder(List<float> series)// פונקציה המציגה את הסדרה בריוורס
             {
                 Console.Write("The reversed order: ");
                 for(int i = series.Count()-1; i >= 0; i--)
@@ -151,16 +152,30 @@ namespace Analayzer
 
                 Console.WriteLine();
                 Console.Write("The original order: ");
-                showSeries(series); // שימוש בפונקציה השנייה כדי להציג את השוני בין הליסט המקורי לריוורס 
+                ShowSeries(series); // שימוש בפונקציה השנייה כדי להציג את השוני בין הליסט המקורי לריוורס 
             }  
 
 
-            void sortedOrder(List<float> series)// פונקציה המציגה את הסדרה באופן מסודר מהקטן לגדול
+            void SortedOrder(List<float> series)// פונקציה המציגה את הסדרה באופן ממויין מהערך הנמוך לגבוה
             {
                 List<float> sortedList = new List<float>([..series]);
                 sortedList.Sort();
                 Console.WriteLine(string.Join(", ", sortedList));
-            }   
+            }  
+
+    
+            void MaxValue(List<float> series)
+            {
+                float maxValue = series[0];
+                for(int i = 1; i < series.Count; i++)
+                {
+                    if(series[i] > maxValue)
+                    {
+                        maxValue = series[i];
+                    }  
+                }
+                Console.WriteLine($"{maxValue}");
+            } 
         }   
     }
 }
