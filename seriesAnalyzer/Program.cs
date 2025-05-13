@@ -45,7 +45,7 @@ namespace Analayzer
                         break;
 
                     case 7:                    
-                        Console.WriteLine("g");
+                        Average(input);
                         break;
 
                     case 8:                    
@@ -183,12 +183,31 @@ namespace Analayzer
                 double minValue = series[0];
                 for(int i = 1; i < series.Count; i++)
                 {
-                    if(series[i] > minValue)
+                    if(series[i] < minValue)
                     {
                         minValue = series[i];
                     }  
                 }
                 Console.WriteLine($"{minValue}");
+            }
+
+            
+            void Average(List<double> series)
+            {
+                double sumNums = SumList(series);
+                double average = sumNums / series.Count;
+                Console.WriteLine($"The average: {average}"); 
+            }
+
+
+            double SumList(List<double> series)
+            {
+                double sumOfNum = 0;
+                foreach(double num in series)
+                {
+                    sumOfNum += num;
+                }
+                return sumOfNum;
             }
         }   
     }
