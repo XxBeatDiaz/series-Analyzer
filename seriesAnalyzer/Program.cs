@@ -28,12 +28,11 @@ namespace Analayzer
                         break;
 
                     case 3:   
-                        showSeries(input); // שימוש בפונקציה השנייה כדי להציג את השוני בין המקורי לריוורס              
-                        reversOrder(input); // הפונקציה השלישית להדפסת הסדרה בריוורס
+                        reversOrder(input); // הפונקציה השלישית להדפסת הסדרה בריוורס                                    
                         break;
 
                     case 4:                    
-                        Console.WriteLine("d");
+                        sortedOrder(input);
                         break;
 
                     case 5:                    
@@ -64,7 +63,9 @@ namespace Analayzer
                         break;
                 }
             }
-            //פונקציה מספר 1
+
+
+            //פונקציה היוצרת סדרה חדשה
             List <float> newSeries()
             {
                 string numbers = Console.ReadLine()!;//קבלת סטרינג מהמשתמש 
@@ -130,7 +131,7 @@ namespace Analayzer
                 return listNums; 
             }
 
-            //סיום פונקציות עזר
+            // סיום פונקציות עזר לפונקציה הראשונה
             /////////////////////////////////////////
             
 
@@ -140,16 +141,26 @@ namespace Analayzer
             }
 
 
-             void reversOrder(List<float> userInput)// פונקציה המציגה את הסדרה בריוורס
+             void reversOrder(List<float> series)// פונקציה המציגה את הסדרה בריוורס
             {
-                System.Console.Write("The reversed order: ");
-                for(int i = userInput.Count()-1; i >= 0; i--)
+                Console.Write("The reversed order: ");
+                for(int i = series.Count()-1; i >= 0; i--)
                 {
-                    Console.Write($"{i},");
+                    Console.Write($"{series[i]}, ");
                 }
+
+                Console.WriteLine();
+                Console.Write("The original order: ");
+                showSeries(series); // שימוש בפונקציה השנייה כדי להציג את השוני בין הליסט המקורי לריוורס 
             }  
 
-            
+
+            void sortedOrder(List<float> series)// פונקציה המציגה את הסדרה באופן מסודר מהקטן לגדול
+            {
+                List<float> sortedList = new List<float>([..series]);
+                sortedList.Sort();
+                Console.WriteLine(string.Join(", ", sortedList));
+            }   
         }   
     }
 }
