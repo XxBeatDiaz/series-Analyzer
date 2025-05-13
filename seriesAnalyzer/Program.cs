@@ -13,15 +13,12 @@ namespace Analayzer
             Menu();           
             void Menu()
             {
+                List<double> input = NewSeries();
                 bool flag = true;
                 while(flag)
-                {
-                    List<double> input = NewSeries();//This is where the first series will come in || Temporary!!!
-                    
-
+                {   
                     showMenu();//Print the menu
-                    int user1 = int.Parse(Console.ReadLine()!);//Request a number from the user to select a function|| Temporary!!!
-
+                    int user1 = int.Parse(Console.ReadLine()!);
                     switch (user1)
                     {
                         case 1:          
@@ -32,54 +29,63 @@ namespace Analayzer
                         case 2:                    
                             //The second function - which print the original series
                             ShowSeries(input);
+                            Console.ReadKey();
                             break;
 
                         case 3:   
                             //The third function - which returns the series in reverse 
                             Console.WriteLine($"Revers series: {string.Join(", ", ReversOrder(input))}");
                             ShowSeries(input);//Using the second function to display the difference between the original and reverse list                                  
+                            Console.ReadKey();
                             break;
 
                         case 4:
                             //The fourth function - which returns the series sorted from lowest to highest value 
                             List<double> sortSeries = SortedOrder(input);                   
                             Console.WriteLine($"Sorted series: {string.Join(", ", sortSeries)}"); 
+                            Console.ReadKey();
                             break;
 
                         case 5:                    
                             //The fifth function - which returns the highest number in the series
                             double maxValue = MaxValue(input);
                             Console.WriteLine($"Max value: {maxValue}");
+                            Console.ReadKey();
                             break;
 
                         case 6:                    
                             //The sixth function - which returns the lowest number in the series
                             double minValue = MinValue(input);
                             Console.WriteLine($"Min value: {minValue}");
+                            Console.ReadKey();
                             break;
 
                         case 7:                    
                             //The seventh function - which returns the numerical average of the series
                             double average = Average(input);
                             Console.WriteLine($"Average: {average}");
+                            Console.ReadKey();
                             break;
 
                         case 8:                    
                             double lenOfSeries = LenSeries(input);
                             Console.WriteLine($"Lentgh of series: {lenOfSeries}");
+                            Console.ReadKey();
                             break;
 
                         case 9:       
                             //The ninth function - which return the sum of the numbers in the list         
                             double sumList = SumSeries(input);
                             Console.WriteLine($"Sum of numbers in the series: {sumList}");
+                            Console.ReadKey();
                             break;
 
                         case 10:                    
                             flag = false;
                             break;
 
-                        default:                          
+                        default: 
+
                             break;
                     }
                 }
@@ -146,6 +152,10 @@ namespace Analayzer
 
                 foreach(string num in arryNums)
                 {
+                    if(num == "")//Check it becous the split creats a empty string
+                    {
+                        continue;
+                    }
                     double convert = double.Parse(num);
                     listNums.Add(convert);
                 }
@@ -154,7 +164,7 @@ namespace Analayzer
             }
 
 
-           
+
             //Ending of helper functions for the first function
             /////////////////////////////////////////
             
@@ -281,6 +291,20 @@ Enter your series: ");
                         Console.WriteLine("The series empty try egain");
                         continue;
                     }
+
+                    int counter = 0;
+                    foreach(char i in user)
+                    {
+                        if(char.IsDigit(i))
+                        {
+                            counter++;  
+                        }
+                    }
+
+                    if(counter < 3)
+                    {
+                        continue;
+                    }       
 
                     string cleanInputs = CleanString(user); //Cleaning from signs and letters
 
