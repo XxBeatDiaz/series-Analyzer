@@ -64,8 +64,10 @@ namespace Analayzer
                         Console.WriteLine("h");
                         break;
 
-                    case 9:                    
-                        Console.WriteLine("i");
+                    case 9:       
+                        //The ninth function - which return the sum of the numbers in the list         
+                        double sumList = SumList(input);
+                        Console.WriteLine($"Sum of numbers in the list: {sumList}");
                         break;
 
                     case 10:                    
@@ -205,12 +207,12 @@ namespace Analayzer
             //A function that returns the numerical average of the series
             double Average(List<double> series)
             {
-                double sumNums = SumList(series);//Sum the number in the list
+                double sumNums = SumList(series);//Using the ninth function Sum to sum the number in the list
                 double average = sumNums / series.Count;
                 return average; 
             }
 
-            //Helper function for the average function
+            //A function that returns the sum of the numbers in list
             double SumList(List<double> series)
             {
                 double sumOfNum = 0;
