@@ -86,30 +86,26 @@ namespace Analayzer
                 
             }
 
+            
+            
+
+
+
 
             //Function that creates a new series
             List <double> NewSeries()
             {
-                string numbers = Console.ReadLine()!;//Receive a string from the user
-                if(IsEmptyString(numbers))//Check if the string is empty
-                {
-                    Console.WriteLine("The series empty try egain");
-                    List<double> error = new List<double>{-1};
-                    return error; //Sends a message that the string is empty and returns a list with the digit minus one.                
-                }
-
-                string cleanNumbers = CleanString(numbers); //Cleaning from signs and letters
-                List<double> listNums = MakeListNums(cleanNumbers); //Converts the string to a list
+                string numbers = userInput();//Receive a string from the user
+                List<double> listNums = MakeListNums(numbers); //Converts the string to a list
 
                 return listNums;
             }
+            
+
 
 
             //Helper functions for the function to create a new series
             ///////////////////////////////////////
-            
-            
-
 
             //String cleaning function
             string CleanString(string numbers) 
@@ -140,6 +136,7 @@ namespace Analayzer
                     }
                 return empty;
             }
+            
 
             //A function that converts a string to a list
             List<double> MakeListNums(string numbers)
@@ -156,11 +153,12 @@ namespace Analayzer
                 return listNums; 
             }
 
-            //
 
+           
             //Ending of helper functions for the first function
             /////////////////////////////////////////
             
+
 
             //A function that displays the original series
             void ShowSeries(List<double> series)
@@ -263,6 +261,64 @@ namespace Analayzer
 ==================================================
 ");
                 Console.Write("Enter your choice (1-10): ");
+            }
+
+
+            string userInput()
+            {       
+                               
+                string user;
+                while(true)
+                {
+                Console.Write(@"Pay attention - separate each number with a comma. 
+Do not add unnecessary symbols other than numbers, commas or a decimal point.
+You must enter at least 3 numbers.
+Enter your series: ");
+
+                    user = Console.ReadLine()!;
+                    if(IsEmptyString(user))//Check if the string is empty
+                    {
+                        Console.WriteLine("The series empty try egain");
+                        continue;
+                    }
+
+                    string cleanInputs = CleanString(user); //Cleaning from signs and letters
+
+                    if(CheckInput(cleanInputs))
+                    {
+                        Console.WriteLine("Not validation input try egain");
+                        continue;
+                    }
+
+                    return cleanInputs;
+                }
+            }
+
+            //A function that asks for a series from the user
+            bool CheckInput(string user)
+            {
+                bool isError = false;
+                if (//user[0] == ',' || 
+                    user[0] == '.' || 
+                    // user[user.Length - 1] == ',' ||
+                    user[user.Length - 1] == '.')
+                    
+                {
+                    isError = true;
+                    return isError; 
+                }
+
+                for (int i = 0; i < user.Length-1; i++)
+                {
+                    if (user[i] == '.' && user[i+1] == '.' || 
+                        // user[i] == ',' && user[i+1] == ',' ||
+                        user[i] == '.' && user[i+1] == ',')
+                    {
+                        isError = true;
+                        return isError;
+                    }
+                }
+                return isError;
             }
         }   
     }
