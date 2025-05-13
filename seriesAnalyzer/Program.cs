@@ -61,13 +61,14 @@ namespace Analayzer
                         break;
 
                     case 8:                    
-                        Console.WriteLine("h");
+                        double lenOfSeries = LenSeries(input);
+                        Console.WriteLine($"Lentgh of series: {lenOfSeries}");
                         break;
 
                     case 9:       
                         //The ninth function - which return the sum of the numbers in the list         
-                        double sumList = SumList(input);
-                        Console.WriteLine($"Sum of numbers in the list: {sumList}");
+                        double sumList = SumSeries(input);
+                        Console.WriteLine($"Sum of numbers in the series: {sumList}");
                         break;
 
                     case 10:                    
@@ -207,13 +208,24 @@ namespace Analayzer
             //A function that returns the numerical average of the series
             double Average(List<double> series)
             {
-                double sumNums = SumList(series);//Using the ninth function Sum to sum the number in the list
+                double sumNums = SumSeries(series);//Using the ninth function Sum to sum the number in the list
                 double average = sumNums / series.Count;
                 return average; 
             }
+            
+            //A function that returns the lentgh of the series
+            double LenSeries(List<double> series)
+            {
+                int counter = 0;
+                foreach(int i in series)
+                {
+                    counter++;
+                }
+                return counter;
+            }
 
             //A function that returns the sum of the numbers in list
-            double SumList(List<double> series)
+            double SumSeries(List<double> series)
             {
                 double sumOfNum = 0;
                 foreach(double num in series)
