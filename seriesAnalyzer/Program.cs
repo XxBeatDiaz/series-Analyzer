@@ -2,6 +2,7 @@
 using System.Numerics;
 using System.Reflection.Metadata;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 
 namespace Analayzer
 {
@@ -21,7 +22,8 @@ namespace Analayzer
                 switch (user1)
                 {
                     case 1:          
-                        input = NewSeries();//The first function - to create a new series
+                        //The first function - to create a new series
+                        input = NewSeries();                      
                         break;
 
                     case 2:                    
@@ -29,23 +31,33 @@ namespace Analayzer
                         break;
 
                     case 3:   
-                        ReversOrder(input);//The third function - which returns the series in reverse                                  
+                        //The third function - which returns the series in reverse 
+                        Console.WriteLine($"The revers order series: {string.Join(", ", ReversOrder(input))}");
+                        ShowSeries(input);//Using the second function to display the difference between the original and reverse list                                  
                         break;
 
-                    case 4:                    
-                        SortedOrder(input);//The fourth function - which returns the series sorted from lowest to highest value
+                    case 4:
+                        //The fourth function - which returns the series sorted from lowest to highest value 
+                        List<double> sortSeries = SortedOrder(input);                   
+                        Console.WriteLine($"Sorted order series: {string.Join(", ", sortSeries)}"); 
                         break;
 
                     case 5:                    
-                        MaxValue(input);//The fifth function - which returns the highest number in the series
+                        //The fifth function - which returns the highest number in the series
+                        double maxValue = MaxValue(input);
+                        Console.WriteLine($"Max value: {maxValue}");
                         break;
 
                     case 6:                    
-                        MinValue(input);//The sixth function - which returns the lowest number in the series
+                        //The sixth function - which returns the lowest number in the series
+                        double minValue = MinValue(input);
+                        Console.WriteLine($"Min value: {minValue}");
                         break;
 
                     case 7:                    
-                        Average(input);//The seventh function - which returns the numerical average of the series
+                        //The seventh function - which returns the numerical average of the series
+                        double average = Average(input);
+                        Console.WriteLine($"Average: {average}");
                         break;
 
                     case 8:                    
@@ -140,33 +152,30 @@ namespace Analayzer
             //A function that displays the original series
             void ShowSeries(List<double> series)
             {
-                Console.WriteLine(string.Join(", ", series));
+                Console.WriteLine($"The original series: {string.Join(", ", series)}");
             }
 
             //A function that returns the series in reverse
-             void ReversOrder(List<double> series)
+             List<double> ReversOrder(List<double> series)
             {
-                Console.Write("The reversed order: ");
-                for(int i = series.Count()-1; i >= 0; i--)
+                List<double> reversOrderList = new List<double>();
+                for(int i = series.Count -1; i >= 0; i--)
                 {
-                    Console.Write($"{series[i]}, ");
+                    reversOrderList.Add(series[i]);
                 }
-
-                Console.WriteLine();
-                Console.Write("The original order: ");
-                ShowSeries(series);//Using the second function to display the difference between the original and reverse list 
+                return reversOrderList;
             }  
 
             //Function that returns the series sorted from lowest to highest value
-            void SortedOrder(List<double> series)
+            List<double> SortedOrder(List<double> series)
             {
                 List<double> sortedList = new List<double>([..series]);
                 sortedList.Sort();
-                Console.WriteLine(string.Join(", ", sortedList));
+                return sortedList;
             }  
 
             //A function that returns the highest value
-            void MaxValue(List<double> series)
+            double MaxValue(List<double> series)
             {
                 double maxValue = series[0];
                 for(int i = 1; i < series.Count; i++)
@@ -176,11 +185,11 @@ namespace Analayzer
                         maxValue = series[i];
                     }  
                 }
-                Console.WriteLine($"{maxValue}");
+                return maxValue;
             } 
 
             //A function that returns the lowest value
-            void MinValue(List<double> series)
+            double MinValue(List<double> series)
             {
                 double minValue = series[0];
                 for(int i = 1; i < series.Count; i++)
@@ -190,15 +199,15 @@ namespace Analayzer
                         minValue = series[i];
                     }  
                 }
-                Console.WriteLine($"{minValue}");
+                return minValue;
             }
 
             //A function that returns the numerical average of the series
-            void Average(List<double> series)
+            double Average(List<double> series)
             {
-                double sumNums = SumList(series);
+                double sumNums = SumList(series);//Sum the number in the list
                 double average = sumNums / series.Count;
-                Console.WriteLine($"The average: {average}"); 
+                return average; 
             }
 
             //Helper function for the average function
