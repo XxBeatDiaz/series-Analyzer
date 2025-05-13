@@ -13,39 +13,39 @@ namespace Analayzer
             Menu();           
             void Menu()
             {
-                List<double> input = NewSeries();//לכאן יכנס הסדרה הראשונה || זמני!!!
+                List<double> input = NewSeries();//This is where the first series will come in || Temporary!!!
 
                 Console.Write("pleas enter number: ");
-                int user1 = int.Parse(Console.ReadLine()!);//בקשת מספר מהמשתמש לבחירת פונקציה|| זמני!!!
+                int user1 = int.Parse(Console.ReadLine()!);//Request a number from the user to select a function|| Temporary!!!
 
                 switch (user1)
                 {
                     case 1:          
-                        input = NewSeries();// הפונקציה הראשונה ליצירת סדרה חדשה
+                        input = NewSeries();//The first function - to create a new series
                         break;
 
                     case 2:                    
-                        ShowSeries(input);// הפונקציה השנייה להדפסת הסדרה הנוכחית
+                        ShowSeries(input);//The second function - which print the original series
                         break;
 
                     case 3:   
-                        ReversOrder(input); // הפונקציה השלישית להדפסת הסדרה בריוורס                                    
+                        ReversOrder(input);//The third function - which returns the series in reverse                                  
                         break;
 
                     case 4:                    
-                        SortedOrder(input);// הפונקציה הרביעית להדפסת הסדרה בצורה ממויינת מהערך הנמוך לגבוה
+                        SortedOrder(input);//The fourth function - which returns the series sorted from lowest to highest value
                         break;
 
                     case 5:                    
-                        MaxValue(input); // הפונקציה החמישית להדפסת המספר הגבוה
+                        MaxValue(input);//The fifth function - which returns the highest number in the series
                         break;
 
                     case 6:                    
-                        MinValue(input);
+                        MinValue(input);//The sixth function - which returns the lowest number in the series
                         break;
 
                     case 7:                    
-                        Average(input);
+                        Average(input);//The seventh function - which returns the numerical average of the series
                         break;
 
                     case 8:                    
@@ -66,28 +66,29 @@ namespace Analayzer
             }
 
 
-            //פונקציה היוצרת סדרה חדשה
+            //Function that creates a new series
             List <double> NewSeries()
             {
-                string numbers = Console.ReadLine()!;//קבלת סטרינג מהמשתמש 
-                if(IsEmpty(numbers))// בדיקה אם ריק
+                string numbers = Console.ReadLine()!;//Receive a string from the user
+                if(IsEmpty(numbers))//Check if the string is empty
                 {
                     Console.WriteLine("The series empty try egain");
-                    List<double> error = new List<double>{0};
-                    return error; //שולח הודעה שהסטרינג ריק ומחזיר ליסט עם הספרה אפס                 
+                    List<double> error = new List<double>{-1};
+                    return error; //Sends a message that the string is empty and returns a list with the digit minus one.                
                 }
 
-                string cleanNumbers = CleanString(numbers); // ניקוי מסימנים ואותיות
-                List <double> listNums = MakeListNums(cleanNumbers); //הופך את הסטרינג לליסט
+                string cleanNumbers = CleanString(numbers); //Cleaning from signs and letters
+                List <double> listNums = MakeListNums(cleanNumbers); //Converts the string to a list
 
                 return listNums;
             }
 
 
-            // פונקציות עזר לפונקציה ליצירת סדרה חדשה
+            //Helper functions for the function to create a new series
             ///////////////////////////////////////
             
-            string CleanString(string numbers) //פונקציה לניקוי סטרינג
+            //String cleaning function
+            string CleanString(string numbers) 
             {
                 foreach(char num in numbers)
                 {
@@ -104,8 +105,8 @@ namespace Analayzer
                 return numbers;
             }
 
-
-            bool IsEmpty(string numbers)//פונקציה הבודקת האם הסטרינג ריק
+            //A function that checks whether a string is empty
+            bool IsEmpty(string numbers)
             {
                 bool empty = false;
 
@@ -116,8 +117,8 @@ namespace Analayzer
                 return empty;
             }
 
-
-            List<double> MakeListNums(string numbers)// פונקציה היוצרת מהסטרינג ליסט
+            //A function that converts a string to a list
+            List<double> MakeListNums(string numbers)
             {
                 string[] arryNums = numbers.Split(',');
 
@@ -132,17 +133,18 @@ namespace Analayzer
                 return listNums; 
             }
 
-            // סיום פונקציות עזר לפונקציה הראשונה
+            //Ending of helper functions for the first function
             /////////////////////////////////////////
             
 
-            void ShowSeries(List<double> series)// פונקציה המציגה את הסדרה המקורית
+            //A function that displays the original series
+            void ShowSeries(List<double> series)
             {
                 Console.WriteLine(string.Join(", ", series));
             }
 
-
-             void ReversOrder(List<double> series)// פונקציה המציגה את הסדרה בריוורס
+            //A function that returns the series in reverse
+             void ReversOrder(List<double> series)
             {
                 Console.Write("The reversed order: ");
                 for(int i = series.Count()-1; i >= 0; i--)
@@ -152,18 +154,18 @@ namespace Analayzer
 
                 Console.WriteLine();
                 Console.Write("The original order: ");
-                ShowSeries(series); // שימוש בפונקציה השנייה כדי להציג את השוני בין הליסט המקורי לריוורס 
+                ShowSeries(series);//Using the second function to display the difference between the original and reverse list 
             }  
 
-
-            void SortedOrder(List<double> series)// פונקציה המציגה את הסדרה באופן ממויין מהערך הנמוך לגבוה
+            //Function that returns the series sorted from lowest to highest value
+            void SortedOrder(List<double> series)
             {
                 List<double> sortedList = new List<double>([..series]);
                 sortedList.Sort();
                 Console.WriteLine(string.Join(", ", sortedList));
             }  
 
-    
+            //A function that returns the highest value
             void MaxValue(List<double> series)
             {
                 double maxValue = series[0];
@@ -177,7 +179,7 @@ namespace Analayzer
                 Console.WriteLine($"{maxValue}");
             } 
 
-
+            //A function that returns the lowest value
             void MinValue(List<double> series)
             {
                 double minValue = series[0];
@@ -191,7 +193,7 @@ namespace Analayzer
                 Console.WriteLine($"{minValue}");
             }
 
-            
+            //A function that returns the numerical average of the series
             void Average(List<double> series)
             {
                 double sumNums = SumList(series);
@@ -199,7 +201,7 @@ namespace Analayzer
                 Console.WriteLine($"The average: {average}"); 
             }
 
-
+            //Helper function for the average function
             double SumList(List<double> series)
             {
                 double sumOfNum = 0;
