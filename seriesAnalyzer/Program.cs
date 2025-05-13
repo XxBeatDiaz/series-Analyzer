@@ -41,7 +41,7 @@ namespace Analayzer
                         break;
 
                     case 6:                    
-                        Console.WriteLine("f");
+                        MinValue(input);
                         break;
 
                     case 7:                    
@@ -176,6 +176,20 @@ namespace Analayzer
                 }
                 Console.WriteLine($"{maxValue}");
             } 
+
+
+            void MinValue(List<float> series)
+            {
+                float minValue = series[0];
+                for(int i = 1; i < series.Count; i++)
+                {
+                    if(series[i] > minValue)
+                    {
+                        minValue = series[i];
+                    }  
+                }
+                Console.WriteLine($"{minValue}");
+            }
         }   
     }
 }
